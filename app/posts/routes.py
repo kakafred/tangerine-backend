@@ -128,7 +128,7 @@ def update_post(post_id):
 
     db.session.commit()
 
-    return jsonify({"message": "Post updated successfully"}), 201
+    return jsonify({"message": "Post updated successfully"})
 
 
 def delete_post_and_children(post):
@@ -152,6 +152,6 @@ def delete_post(post_id):
         db.session.delete(post)
         db.session.commit()
     except IntegrityError:
-        return jsonify({"message": "This post has related child posts. Please delete them first."}), 400
+        return jsonify({"message": "This post has related child posts. Please delete them first."}), 409
 
     return jsonify({"message": "Post deleted successfully"})
