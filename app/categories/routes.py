@@ -65,7 +65,7 @@ def update_category(category_id):
     category.description = description
     db.session.commit()
 
-    return jsonify({"message": "Category updated successfully"}), 201
+    return jsonify({"message": "Category updated successfully"})
 
 
 @bp.route('/<string:category_id>', methods=['DELETE'])
@@ -78,4 +78,4 @@ def delete_category(category_id):
     db.session.delete(category)
     db.session.commit()
 
-    return jsonify({"message": "Category deleted successfully"}), 201
+    return jsonify({"message": "Category deleted successfully"})
