@@ -46,6 +46,6 @@ def login():
         session['user_id'] = user.id
         session['email'] = user.email
         session['avatar_url'] = user.avatar_url
-        return jsonify({"message": "Login successful"}), 200
+        return jsonify({"message": "Login successful"})
     else:
         return jsonify({"error": "Invalid username or password"}), 401
