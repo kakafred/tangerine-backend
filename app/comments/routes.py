@@ -64,7 +64,6 @@ def update_comment(comment_id):
     if not comment:
         return jsonify({"error": "Comment not found"}), 404
 
-    # Check if the current user is the author of the comment
     if current_user.id != comment.user_id:
         return jsonify({"error": "Unauthorized"}), 403
 
@@ -79,7 +78,7 @@ def update_comment(comment_id):
 
     db.session.commit()
 
-    return jsonify({"message": "Comment updated successfully"}), 201
+    return jsonify({"message": "Comment updated successfully"})
 
 
 @bp.route('/<string:comment_id>', methods=['DELETE'])
@@ -92,4 +91,4 @@ def delete_comment(comment_id):
     db.session.delete(comment)
     db.session.commit()
 
-    return jsonify({"message": "Comment deleted successfully"}), 201
+    return jsonify({"message": "Comment deleted successfully"})
