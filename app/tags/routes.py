@@ -55,7 +55,7 @@ def update_tag(tag_id):
     tag.name = name
     db.session.commit()
 
-    return jsonify({"message": "Tag updated successfully"}), 201
+    return jsonify({"message": "Tag updated successfully"})
 
 
 @bp.route('/<int:tag_id>', methods=['DELETE'])
@@ -68,4 +68,4 @@ def delete_tag(tag_id):
     db.session.delete(tag)
     db.session.commit()
 
-    return jsonify({"message": "Tag deleted successfully"}), 201
+    return jsonify({"message": "Tag deleted successfully"})
