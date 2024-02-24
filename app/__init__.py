@@ -10,12 +10,10 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Initialize Flask extensions here
     db.init_app(app)
     CORS(app)
     login_manager.init_app(app)
 
-    # Register blueprints here
     from app.authentication import bp as auth_bp
     app.register_blueprint(auth_bp)
 
@@ -42,9 +40,5 @@ def create_app(config_class=Config):
     @app.errorhandler(500)
     def internal_server_error(error):
         return jsonify({"error": "Oops, internal server error..."}), 500
-
-    @app.route('/welcome/')
-    def welcome():
-        return '<h1>Welcome to tangerine.</h1>'
 
     return app
